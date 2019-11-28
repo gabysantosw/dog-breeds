@@ -1,5 +1,6 @@
 // === SETUP
 const display = document.querySelector("#js-image");
+const displayFiller = document.querySelector('#js-image-fill')
 const spinner = document.querySelector("#js-spinner");
 const select = document.querySelector("#js-select");
 
@@ -16,6 +17,7 @@ function init() {
     })
     .then(function(data) {
       display.src = data.message;
+      displayFiller.src = data.message;
     });
   
   display.addEventListener('load', function() {
@@ -23,6 +25,7 @@ function init() {
     spinner.classList.add('hide');
     // show image (in case its hidden)
     display.classList.remove('hide');
+    displayFiller.classList.remove('hide');
   });
   
   // populate dropdown
@@ -64,6 +67,7 @@ function getBreed(name) {
   spinner.classList.remove('hide');
   // hide current image
   display.classList.add('hide');
+  displayFiller.classList.add('hide');
 
   fetch(SELECTED_BREED_URL)
     .then(function(response) {
@@ -71,6 +75,7 @@ function getBreed(name) {
     })
     .then(function(data) {
       display.src = data.message;
+      displayFiller.src = data.message;
     })
 }
 
